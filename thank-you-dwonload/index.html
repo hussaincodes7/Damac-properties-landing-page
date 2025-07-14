@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brochure Download - DAMAC Properties</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #000000;
+      --secondary: #111111;
+      --accent: #333333;
+      --light: #f8f8f8;
+      --text: #222222;
+      --text-light: #555555;
+      --white: #ffffff;
+      --border: #e0e0e0;
+      --success: #10b981;
+      --success-light: #d1fae5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: var(--white);
+      color: var(--primary);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--primary);
+    }
+    
+    .logo-separator {
+      width: 2px;
+      height: 20px;
+      background: var(--primary);
+      margin: 0 0.25rem;
+    }
+    
+    .logo-subtitle {
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+    
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .nav-item {
+      padding: 0.5rem 1rem;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      border-radius: 4px;
+    }
+    
+    .nav-item:hover {
+      color: var(--primary);
+      background: rgba(0,0,0,0.05);
+    }
+    
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 400;
+      z-index: 999;
+    }
+    
+    .main {
+      padding: 8rem 1rem 6rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      min-height: calc(100vh - 140px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 4rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 800px;
+    }
+    
+    .download-icon {
+      width: 5rem;
+      height: 5rem;
+      margin: 0 auto 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--success-light);
+      border-radius: 50%;
+      position: relative;
+    }
+    
+    .download-icon::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.1);
+      animation: pulse 2s infinite;
+    }
+    
+    .download-icon svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      z-index: 1;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+    
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      min-width: 200px;
+    }
+    
+    .btn-primary {
+      background: var(--success);
+      color: var(--white);
+      border: 2px solid var(--success);
+    }
+    
+    .btn-secondary {
+      background: var(--white);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn-primary:hover {
+      background: var(--white);
+      color: var(--success);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .download-info {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+    
+    .download-info-icon {
+      width: 3rem;
+      height: 3rem;
+      background: var(--white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .download-info-content h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .download-info-content p {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+    
+    .contacts {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .contact:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .contact-icon {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.05);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .contact:hover .contact-icon {
+      background: var(--primary);
+    }
+    
+    .contact:hover .contact-icon svg {
+      fill: var(--white);
+    }
+    
+    .contact svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      transition: fill 0.3s ease;
+    }
+    
+    .contact a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.95rem;
+      display: inline-block;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .contact a:hover {
+      color: var(--primary);
+    }
+    
+    .contact a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 50%;
+      background: var(--primary);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .contact a:hover::after {
+      width: 100%;
+    }
+    
+    .divider {
+      margin: 2.5rem auto;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      border-radius: 1px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .main {
+        padding: 7rem 2rem 5rem;
+      }
+      
+      .card {
+        padding: 3rem 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+      
+      .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      
+      .logo {
+        font-size: 1.25rem;
+      }
+      
+      .logo-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .header-nav {
+        display: none;
+      }
+      
+      .main {
+        padding: 6rem 1rem 4rem;
+      }
+      
+      .card {
+        padding: 2.5rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .download-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+      }
+      
+      .contacts {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .contact {
+        flex-direction: row;
+        text-align: left;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+      
+      .contact-icon {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 0.75rem 1rem;
+      }
+      
+      .logo-container {
+        gap: 0.25rem;
+      }
+      
+      .logo {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+      
+      .logo-separator {
+        height: 16px;
+      }
+      
+      .logo-subtitle {
+        font-size: 0.8rem;
+      }
+      
+      .main {
+        padding: 5rem 0.75rem 3.5rem;
+      }
+      
+      .card {
+        padding: 2rem 1rem;
+        border-radius: 8px;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+      }
+      
+      .download-icon {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .download-icon svg {
+        width: 2rem;
+        height: 2rem;
+      }
+      
+      p {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+      
+      .btn {
+        padding: 0.875rem 2rem;
+        font-size: 0.85rem;
+      }
+      
+      .download-info {
+        padding: 1rem;
+      }
+      
+      .contacts {
+        margin-top: 1.5rem;
+      }
+      
+      .contact {
+        padding: 0.75rem;
+      }
+      
+      .contact-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      
+      .contact svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+      
+      .contact a {
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .logo {
+        font-size: 1rem;
+      }
+      
+      .logo-subtitle {
+        font-size: 0.75rem;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .card {
+        padding: 1.5rem 0.75rem;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { 
+        transform: scale(1); 
+        opacity: 1; 
+      }
+      50% { 
+        transform: scale(1.05); 
+        opacity: 0.8; 
+      }
+    }
+    
+    @keyframes slideInFromTop {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    header {
+      animation: slideInFromTop 0.6s ease-out;
+    }
+    
+    .card {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .download-icon {
+      animation: bounceIn 1s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+    
+    h1 {
+      animation: fadeIn 0.8s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+    
+    p {
+      animation: fadeIn 0.8s ease-out 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .download-info {
+      animation: fadeIn 0.8s ease-out 0.5s forwards;
+      opacity: 0;
+    }
+    
+    .button-group {
+      animation: fadeIn 0.8s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+    
+    .divider {
+      animation: fadeIn 0.8s ease-out 0.7s forwards;
+      opacity: 0;
+    }
+    
+    .contacts {
+      animation: fadeIn 0.8s ease-out 0.8s forwards;
+      opacity: 0;
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    /* Focus styles for accessibility */
+    .nav-item:focus,
+    .btn:focus,
+    .contact a:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <div class="logo-container">
+      <div class="logo">DAMAC</div>
+      <div class="logo-separator"></div>
+      <div class="logo-subtitle">PROPERTIES</div>
+    </div>
+    <nav class="header-nav">
+      <a href="/" class="nav-item">Home</a>
+      
+    </nav>
+  </div>
+</header>
+
+<div class="main">
+  <div class="card">
+    <div class="download-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--success)">
+        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+        <path d="M12,11L16,15H13V19H11V15H8L12,11Z"/>
+      </svg>
+    </div>
+    
+    <h1>Brochure Ready for Download</h1>
+    <p>Thank you for your interest in DAMAC Properties. Your exclusive property brochure is ready for download. Discover our premium developments, luxury amenities, and investment opportunities.</p>
+    
+    <div class="download-info">
+      <div class="download-info-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--text-light)" width="24" height="24">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+        </svg>
+      </div>
+      <div class="download-info-content">
+        <h3>DAMAC Properties Brochure</h3>
+        <p>PDF Format • Premium Property Collection</p>
+      </div>
+    </div>
+    
+    <div class="button-group">
+      <a href="files/brochure.pdf" download="DAMAC-Properties-Brochure.pdf" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
+        </svg>
+        Download Brochure
+      </a>
+      <a href="/" class="btn btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+        </svg>
+        Return to Homepage
+      </a>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="contacts">
+      <div class="contact">
+        <div class="contact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--text-light)">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <a href="mailto:sales@knightcastle.com">sales@knightcastle.com</a>
+      </div>
+      
+      <div class="contact">
+        <div class="contact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--text-light)">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+          </svg>
+        </div>
+        <a href="tel:+971505685098">+971 50 568 5098</a>
+      </div>
+      
+      <div class="contact">
+        <div class="contact-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--text-light)">
+            <path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.96-1.38-.92-2.61.05-1.22.69-1.8.95-2.04.24-.26.51-.29.68-.26h.47c.15 0 .36-.06.55.45l.69 1.87c.06.13.1.28.01.44l-.27.41-.39.42c-.12.12-.26.25-.12.5.12.26.62 1.09 1.32 1.78.91.88 1.71 1.17 1.95 1.3.24.14.39.12.54-.04l.81-.94c.19-.25.35-.19.58-.11l1.67.88M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10c-1.97 0-3.8-.57-5.35-1.55L2 22l1.55-4.65A9.969 9.969 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8c0 1.72.54 3.31 1.46 4.61L4.5 19.5l2.89-.96A7.95 7.95 0 0 0 12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8z"/>
+          </svg>
+        </div>
+        <a href="https://wa.me/971505685098s" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; <script>document.write(new Date().getFullYear())</script> DAMAC Properties. All rights reserved.</footer>
+
+</body>
+</html>
